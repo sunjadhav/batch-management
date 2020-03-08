@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Update Student Information</title>
+<link th:href="@{/css/style.css}" type="text/css" rel="stylesheet"> 
+<link th:href="@{/css/menu.css}" type="text/css" rel="stylesheet">
+<script th:src="@{/js/student_events.js}" type="text/javascript"></script>
+<script th:src="@{/js/jquery-min.js}" type="text/javascript"></script>
+</head>
+<body>
+<header th:insert="fragments/header.html :: head"> </header>
+<div class="container">
+	<div class="main">
+		<div align="center">
+			<h1>Update Student Information</h1>
+			<br /><br />
+			<form action="#" th:action="@{/updatestudent}"
+				th:object="${student}" method="post" onsubmit="return StudentEvent()">
+			
+				<input Id="txtId" type="hidden" th:field="*{id}" />
+				
+				<label>First Name:</label><br/>
+				<input Id="txtName" type="text" th:field="*{name}" /><br/>
+				
+				
+				<label>Last Name:</label><br/>
+				<input Id="txtSurname" type="text" th:field="*{surname}" /><br/>
+					
+			
+				<label>Address:</label><br/>
+				<input Id="txtAddress" type="text" th:field="*{address}" /><br/>
+				
+				<label>Mobile Number:</label><br/>
+				<input Id="txtMobile" type="text"  maxlength="10" th:field="*{phoneNumber}" /><br/>
+				
+				<label>College/Company:</label><br/>
+				<input Id="txtCollege" type="text" th:field="*{college}" /><br/>
+				
+				<label>Education:</label><br/>
+				<input Id="txtEducation" type="text" th:field="*{education}" /><br/>
+				
+				<label>Paid Amount:</label><br/>
+				<input Id="txtPaidAmount" type="text" th:field="*{paidAmount}" /><br/>
+				
+				<label>Pending Amount:</label><br/>
+				<input Id="txtPendingAmount" type="text" th:field="*{pendingAmount}" /><br/>
+							
+				<label>Batch Name:</label><br/>
+				<select Id="drpbatchID" class="select-css" th:field="*{batchName}">
+					<option value='select'>select</option>		
+					<option th:each="batch : ${listbatches}"
+							th:value="${batch.name}" 
+							th:text="${batch.name}">
+					</option>
+				</select><br/><br/>
+				<button Id="btnSave" type="submit" >Update Student </button><br/><br/>
+				<div id="errorMsg" style="color:red" class="a"></div><br/><br/>
+			</form>
+		</div>
+	</div>
+<footer th:replace="fragments/header.html :: footer"> </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Login</title>
+<link th:href="@{/css/style.css}" type="text/css" rel="stylesheet"> 
+<script type="text/javascript" th:src="@{/js/jquery-min.js}"></script>
+
+<!-- <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/js/login_events.js}"></script>  -->
+
+ </head>
+<body>
+<div class="container">
+	<div class="main">
+		<div align="center">
+			<h1>Batch Manager</h1>
+			<br/><br/>
+			<form id="login_form" action="/home" th:action="@{/login}" th:object="${user}" method="post">
+
+				<label>User Name:</label><br/>
+				<input Id ="txtUserName" type="text" th:field="*{userName}" /><br/>
+				
+				<label>Password:</label><br/>
+				<input Id ="txtPassword" type="password" th:field="*{password}" /><br/>
+				
+				<button Id = "btnSignin" type="submit" > Login</button><br/><br/>
+				<div id="errorMsg" style="color:red" class="a" th:text="*{error}"></div><br/><br/>
+			</form>
+		</div>
+	</div>	
+<footer th:replace="fragments/header.html :: footer"> </footer>
+</div>
+</body>
+</html>
