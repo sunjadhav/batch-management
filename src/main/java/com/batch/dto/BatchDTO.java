@@ -14,4 +14,5 @@ public class BatchDTO {
 	private String isActive;
 	private Double collection;
 	private Double pendingCollection;
+	private Integer studentsCount;
 }

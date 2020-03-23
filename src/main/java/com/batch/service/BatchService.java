@@ -3,7 +3,6 @@ package com.batch.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -220,13 +219,15 @@ public class BatchService {
 		batchDTO.setIsActive(batch.getIsActive());
 
 		List<Student> students = studentRepository.findByBatch(batch);
-
+		int studentsCount = 0;
 		for (Student student : students) {
 			collection = collection + Double.valueOf(student.getPaidAmount());
 			pendingCollection = pendingCollection + Double.valueOf(student.getPendingAmount());
+			studentsCount++;
 		}
 		batchDTO.setCollection(collection);
 		batchDTO.setPendingCollection(pendingCollection);
+		batchDTO.setStudentsCount(studentsCount);
 		return batchDTO;
 	}
 

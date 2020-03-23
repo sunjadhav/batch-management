@@ -43,6 +43,7 @@
 					<th>isActive</th>
 					<th>Batch Collection</th>
 					<th>Pending Collection</th>
+					<th>No. of Students</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -57,6 +58,7 @@
 					<td th:text="${batch.isActive}">isActive</td>
 					<td th:text="${batch.collection}">Batch Collection</td>
 					<td th:text="${batch.pendingCollection}">Pending Collection</td>
+					<td th:text="${batch.studentsCount}">No. of Students</td>
 					<td><a th:href="@{'/undobatch/' + ${batch.id}}">Undo</a>
 						&nbsp;&nbsp;&nbsp; <a th:onclick="return confirm('Are you sure ? This batch will be deleted forever.');"
 						th:href="@{'/batch/delete/' + ${batch.id}}">Delete Forever</a>
