@@ -1,9 +1,9 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/batch_management?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=America/New_York
-    username: root
-    password: mysql
+    url: jdbc:mysql://162.241.85.93:3306/webflash_batch_management?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=America/New_York
+    username: webflash_admin
+    password: Admin@mysql
     initialization-mode : always
   jpa:
     database: MYSQL
@@ -12,10 +12,10 @@ spring:
       ddl-auto: none
     generate-ddl : false
   flyway:
-   url: jdbc:mysql://localhost:3306/mysql
-   schemas: batch_management
-   user: "root"
-   password: "mysql"    
+   url: jdbc:mysql://162.241.85.93:3306/webflash_batch_management
+   user: "webflash_admin"
+   password: "Admin@mysql"
+   baselineOnMigrate: true    
 
 logging:
   level:

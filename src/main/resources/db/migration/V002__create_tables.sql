@@ -1,4 +1,4 @@
-USE `batch_management`;
+USE `webflash_batch_management`;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
