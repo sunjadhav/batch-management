@@ -1,21 +1,10 @@
-#
-# Host IP
-#
-RUN hostname -I | awk '{print $1}'
-
-#
-# Build stage
-#
-
 FROM maven:3.8.2-jdk-8 AS build
 COPY . .
 RUN mvn clean package -DskipTests
 
-#
-# Package stage
-#
 FROM openjdk:8-jdk-slim
+RUN /sbin/ip route|awk '/default/ { print $3 }' > /tmp/host_ip
 COPY --from=build /target/batch-management.jar bm.jar
-# ENV PORT=8080
+ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","bm.jar"]
+CMD ["sh", "-c", "echo 'Docker host IP address: $(cat /tmp/host_ip)' && java -jar bm.jar"]
