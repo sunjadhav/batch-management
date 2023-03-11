@@ -3,6 +3,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:8-jdk-slim
+RUN apt-get update && apt-get install -y iproute2
 COPY --from=build /target/batch-management.jar bm.jar
 ENV PORT=8080
 EXPOSE 8080
