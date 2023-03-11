@@ -9,7 +9,7 @@ RUN mvn clean package -DskipTests
 # Package stage
 #
 FROM openjdk:8-jdk-slim
-COPY --from=build /target/batch-management-0.0.1-SNAPSHOT.jar batch-management.jar
+COPY --from=build /target/batch-management.jar bm.jar
 # ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","batch-management.jar"]
+ENTRYPOINT ["java","-jar","bm.jar"]
