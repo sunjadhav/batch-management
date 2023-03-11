@@ -7,4 +7,4 @@ RUN /sbin/ip route|awk '/default/ { print $3 }' > /tmp/host_ip
 COPY --from=build /target/batch-management.jar bm.jar
 ENV PORT=8080
 EXPOSE 8080
-CMD ["sh", "-c", "echo 'Docker host IP address: $(cat /tmp/host_ip)' && java -jar bm.jar"]
+CMD ["sh", "-c", "echo 'Docker host IP address:' && cat /tmp/host_ip && java -jar bm.jar"]
